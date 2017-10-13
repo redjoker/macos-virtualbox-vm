@@ -160,7 +160,13 @@ else
     if [ ${result} -eq 0 ] ; then
       createISO "Install OS X Yosemite.app" "Yosemite"
     else
-      echo "Could not find installer for Yosemite (10.10), El Capitan (10.11) or Sierra (10.12)."
+      installerExists "Install macOS High Sierra.app"
+      result=$?
+      if [ ${result} -eq 0 ] ; then
+	createISO "Install macOS High Sierra.app" "HighSierra"
+      else
+        echo "Could not find installer for Yosemite (10.10), El Capitan (10.11) or Sierra (10.12)."
+      fi
     fi
   fi
 fi
